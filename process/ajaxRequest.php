@@ -17,7 +17,7 @@ switch($action) {
 
 
   default:
-    echo "Action Error ";
+    echo "Action Error1 ";
     die();
 
 }
