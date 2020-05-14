@@ -6,4 +6,16 @@ if (empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQU
   header("location:" . BASE_URL);
 }
 
-echo "reza jhastam,d ";
+$action = $_POST['action'];
+$data = $_POST['data'];
+
+
+switch($action){
+  case "addFolder":
+    addFolder($data);
+  break;
+
+  default:
+    echo "Not founded";
+break;
+}
