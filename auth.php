@@ -1,7 +1,9 @@
 <?php
 require "bootstrap/init.php";
 
-echo "<script>alert('sa')</script>";
+if (isset($_SESSION['login'])){
+  header("Location:" . BASE_URL );
+}
 
 if (isset($_COOKIE['email']) && isset($_COOKIE['pass'])){
   $data = ['email' => $_COOKIE['email'],'pass' => $_COOKIE['pass'] ];
