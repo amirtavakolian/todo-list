@@ -34,7 +34,7 @@ function singUp($data)
 
     $prepareRes->bindParam(1, $data['name']);
     $prepareRes->bindParam(2, $data['email']);
-    $prepareRes->bindParam(3, $data['pass']);
+    $prepareRes->bindValue(3, password_hash($data['pass'], PASSWORD_DEFAULT));
 
     $prepareRes->execute();
 
@@ -62,16 +62,16 @@ function singIn($data)
   $fetchRes = $prepareRes->fetch();
 
   echo '<pre>';
-  print_r($fetchRes);
+  print_r($_COOKIE);
   echo '</pre>';
 
 
-    if (password_verify($data['pass'], $fetchRes['password'])){
+    if ($data['pass'] == $fetchRes['password']){
 
-      echo "reza12";
+ 
 
     $_SESSION['login'] = $fetchRes['id'];
-    setcookie("pass", password_hash($fetchRes['password'], PASSWORD_DEFAULT), time() + 60 * 60 * 24 * 365, "/");
+    setcookie("pass", $fetchRes['password'], time() + 60 * 60 * 24 * 365, "/");
     setcookie("email", $fetchRes['email'], time() + 60 * 60 * 24 * 365, "/");
 
     header("Location:" . BASE_URL);
