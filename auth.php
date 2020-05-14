@@ -1,6 +1,7 @@
 <?php
 require "bootstrap/init.php";
 
+echo "<script>alert('sa')</script>";
 
 if (isset($_COOKIE['email']) && isset($_COOKIE['pass'])){
   $data = ['email' => $_COOKIE['email'],'pass' => $_COOKIE['pass'] ];

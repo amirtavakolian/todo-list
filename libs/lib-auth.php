@@ -65,10 +65,12 @@ function singIn($data)
   print_r($fetchRes);
   echo '</pre>';
 
-  if ($data['pass'] == $fetchRes['password']) {
+
+    if (password_verify($data['pass'], $fetchRes['password'])){
+
 
     $_SESSION['login'] = $fetchRes['id'];
-    setcookie("pass", $fetchRes['password'], time() + 60 * 60 * 24 * 365, "/");
+    setcookie("pass", password_hash($fetchRes['password'], PASSWORD_DEFAULT), time() + 60 * 60 * 24 * 365, "/");
     setcookie("email", $fetchRes['email'], time() + 60 * 60 * 24 * 365, "/");
 
     header("Location:" . BASE_URL);
@@ -77,4 +79,5 @@ function singIn($data)
     message("Email or Password is wrong", "error");
     return 0;
   }
+  
 }
