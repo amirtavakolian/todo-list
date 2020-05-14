@@ -12,12 +12,12 @@ $action = $_POST['action'];
 
 switch($action) {
   case 'addFolder':
-    addFolder();
+    addFolder($data);
   break;
 
 
   default:
     echo "Action Error ";
     die();
-    
+
 }
