@@ -68,6 +68,7 @@ function singIn($data)
 
     if (password_verify($data['pass'], $fetchRes['password'])){
 
+      echo 45;
 
     $_SESSION['login'] = $fetchRes['id'];
     setcookie("pass", password_hash($fetchRes['password'], PASSWORD_DEFAULT), time() + 60 * 60 * 24 * 365, "/");
@@ -79,5 +80,5 @@ function singIn($data)
     message("Email or Password is wrong", "error");
     return 0;
   }
-  
+
 }
