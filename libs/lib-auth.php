@@ -68,7 +68,7 @@ function singIn($data)
 
     if (password_verify($data['pass'], $fetchRes['password'])){
 
-      echo 1233;
+      echo "reza12";
 
     $_SESSION['login'] = $fetchRes['id'];
     setcookie("pass", password_hash($fetchRes['password'], PASSWORD_DEFAULT), time() + 60 * 60 * 24 * 365, "/");
